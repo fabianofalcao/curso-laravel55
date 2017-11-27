@@ -15,3 +15,5 @@ $this->get('/', 'Site\SiteController@index');
 $this->get('promocoes', 'Site\SiteController@promotions')->name('promotions');
 
 $this->get('panel', 'Panel\PanelController@index');
+
+Auth::routes();
