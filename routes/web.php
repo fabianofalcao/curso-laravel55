@@ -14,6 +14,10 @@
 $this->get('/', 'Site\SiteController@index');
 $this->get('promocoes', 'Site\SiteController@promotions')->name('promotions');
 
-$this->get('panel', 'Panel\PanelController@index');
+$this->group(['prefix' => 'panel', 'namespace' => 'Panel'], function (){
+    $this->get('/', 'PanelController@index');
+    $this->resource('marcas', 'BrandController');
+});
+
 
 Auth::routes();
