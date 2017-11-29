@@ -344,3 +344,15 @@ footer.sticky-footer {
 @media (min-width: 992px) {
   body.sidenav-toggled footer.sticky-footer {
     width: calc(100% - 55px); } }
+
+.margin-bottom10{ margin-bottom: 10px;}
+.margin-bottom20{ margin-bottom: 20px;}
+.margin-bottom30{ margin-bottom: 30px;}
+.margin-bottom40{ margin-bottom: 40px;}
+.margin-bottom50{ margin-bottom: 50px;}
+
+.margin-top10{margin-top: 10px;}
+.margin-top20{margin-top: 20px;}
+.margin-top30{margin-top: 30px;}
+.margin-top40{margin-top: 40px;}
+.margin-top50{margin-top: 50px;}

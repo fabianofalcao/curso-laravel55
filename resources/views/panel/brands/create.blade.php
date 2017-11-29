@@ -27,11 +27,11 @@
         {!! csrf_field() !!}
         <div class="form-group">
             <label for="name">Nome</label>
-            <input type="text" class="form-control" name="name" id="name" placeholder="Nome">
+            <input type="text" class="form-control form-control-sm" name="name" id="name" placeholder="Nome">
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-default">Cadastrar</button>
+            <button type="submit" class="btn btn-sm btn-default">Cadastrar</button>
         </div>
     </form>
 @endsection
