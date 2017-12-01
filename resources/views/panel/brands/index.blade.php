@@ -48,13 +48,15 @@
     <div class="content-din bg-white">
 
         <div class="form-search">
-            <form class="form form-inline">
-                <input type="text" name="nome" placeholder="Nome:" class="form-control form-control-sm">
+            <!-- <form class="form form-inline"> -->
+            {!! Form::open(['route' => 'marcas.search', 'class' => 'form form-inline']) !!}
+                <!-- <input type="text" name="nome" placeholder="Nome:" class="form-control form-control-sm"> -->
+                {!! Form::text('key_search', null, ['placeholder' => 'O que deseja encontar?']) !!}
                 <button class="btn btn-sm btn-dark">
                     <i class="fa fa-search" aria-hidden="true"></i>
                     Pesquisar
                 </button>
-            </form>
+            {!! Form::close() !!}
         </div>
 
         <!-- Botão de adicionar -->
@@ -86,8 +88,9 @@
         </table>
 
 
+        <!--
         <nav aria-label="Page navigation example">
-            <!--
+
                 <ul class="pagination">
                     <li class="page-item">
                         <a class="page-link" href="#" aria-label="Previous">
@@ -105,9 +108,11 @@
                         </a>
                     </li>
                 </ul>
-                -->
+
+    </nav>
+    -->
             {{ $brands->links() }}
-        </nav>
+
 
 
 
