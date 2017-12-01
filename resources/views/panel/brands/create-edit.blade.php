@@ -11,14 +11,14 @@
         <li class="breadcrumb-item">
             <a href="{{route('marcas.index')}}">Marcas</a>
         </li>
-        <li class="breadcrumb-item active">Adicionar Marcas</li>
+        <li class="breadcrumb-item active">{{$title or 'Gestão de Marcas'}}</li>
     </ol>
     <!-- Fim Breadcrumbs-->
 
     <!-- Titulo da Página -->
     <div class="row">
         <div class="col-12">
-            <h2>Adicionar Marcas</h2>
+            <h2>{{$title or 'Gestão de Marcas'}}</h2>
             <hr/>
         </div>
     </div>
@@ -42,7 +42,14 @@
         @endif
     </div>
 
-    <form name="form_add_brands" id="form_add_brands" action="{{route('marcas.store')}}" method="post">
+    @if(isset($brand))
+        <form name="form_add_brands" id="form_add_brands" action="{{route('marcas.update', $brand->id)}}" method="post">
+            {!! method_field('put') !!}
+    @else
+        <form name="form_add_brands" id="form_add_brands" action="{{route('marcas.store')}}" method="post">
+    @endif
+
+
         {!! csrf_field() !!}
         <div class="form-group">
             <label for="name">Nome</label>
