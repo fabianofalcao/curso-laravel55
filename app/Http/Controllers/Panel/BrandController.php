@@ -119,9 +119,11 @@ class BrandController extends Controller
 
     public function search(Request $request)
     {
+        $dataForm = $request->except('_token');
+
         $brands = $this->brand->search($request, $this->totalPage);
         $title = "Marcas Cadastradas";
 
-        return view('panel.brands.index', compact('brands', 'title'));
+        return view('panel.brands.index', compact('brands', 'title', 'dataForm'));
     }
 }

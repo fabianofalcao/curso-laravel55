@@ -111,7 +111,11 @@
 
     </nav>
     -->
-            {{ $brands->links() }}
+        @if(isset($dataForm))
+            {!!  $brands->appends($dataForm)->links() !!}
+        @else
+            {!! $brands->links() !!}
+        @endif
 
 
 
