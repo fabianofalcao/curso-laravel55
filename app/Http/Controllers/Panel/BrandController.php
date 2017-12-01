@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Http\Requests\BrandStoreUpdadeFormRequestValidator;
 
 class BrandController extends Controller
 {
@@ -44,7 +45,7 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BrandStoreUpdadeFormRequestValidator $request)
     {
         $dataForm = $request->all();
         $insert = $this->brand->create($dataForm);
