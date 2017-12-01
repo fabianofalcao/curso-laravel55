@@ -10,6 +10,7 @@ use App\Http\Requests\BrandStoreUpdadeFormRequestValidator;
 class BrandController extends Controller
 {
     private $brand;
+    protected $totalPage = 1;
 
     public function __construct(Brand $brand)
     {
@@ -24,7 +25,7 @@ class BrandController extends Controller
     public function index()
     {
         $title = 'Marcas de Aviões';
-        $brands = $this->brand->all();
+        $brands = $this->brand->paginate($this->totalPage);
         return view('panel.brands.index', compact('title', 'brands'));
     }
 

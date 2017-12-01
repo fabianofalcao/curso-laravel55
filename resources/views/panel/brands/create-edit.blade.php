@@ -57,7 +57,8 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-sm btn-default">Cadastrar</button>
+            <!-- <button type="submit" class="btn btn-sm btn-default">Cadastrar</button> -->
+            {!! Form::submit('Cadastrar', ['class' => 'btn btn-sm btn-default']) !!}
         </div>
     </form>
 @endsection
