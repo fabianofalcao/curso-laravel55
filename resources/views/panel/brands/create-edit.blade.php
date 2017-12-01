@@ -43,17 +43,17 @@
     </div>
 
     @if(isset($brand))
-        <form name="form_add_brands" id="form_add_brands" action="{{route('marcas.update', $brand->id)}}" method="post">
-            {!! method_field('put') !!}
+        <!-- <form name="form_add_brands" id="form_add_brands" action="{{route('marcas.update', $brand->id)}}" method="post"> -->
+        {!! Form::model($brand, ['route' => ['marcas.update', $brand->id], 'name' => 'form_add_brands', 'id' => 'form_add_brands', 'method' => 'PUT']) !!}
     @else
-        <form name="form_add_brands" id="form_add_brands" action="{{route('marcas.store')}}" method="post">
+        <!-- <form name="form_add_brands" id="form_add_brands" action="{{route('marcas.store')}}" method="post"> -->
+        {!! Form::open(['route' => 'marcas.store', 'name' => 'form_add_brands', 'id' => 'form_add_brands', 'method' => 'POST']) !!}
     @endif
 
-
-        {!! csrf_field() !!}
         <div class="form-group">
             <label for="name">Nome</label>
-            <input type="text" class="form-control form-control-sm" name="name" id="name" value="{{old('name')}}" placeholder="Nome">
+            <!-- <input type="text" class="form-control form-control-sm" name="name" id="name" value="{{old('name')}}" placeholder="Nome"> -->
+            {!! Form::text('name', null, ['class' => "form-control form-control-sm", 'id' => "name", 'placeholder' => "Nome"]) !!}
         </div>
 
         <div class="form-group">
