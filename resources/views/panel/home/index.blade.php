@@ -15,7 +15,7 @@
     <!-- Titulo da Página -->
     <div class="row">
         <div class="col-12">
-            <h1>Home Page</h1>
+            <h2>Home Page</h2>
             <hr/>
         </div>
     </div>

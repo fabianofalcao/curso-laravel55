@@ -15,7 +15,7 @@
     <!-- Titulo da Página -->
     <div class="row">
         <div class="col-12">
-            <h1>Marcas de Aviões</h1>
+            <h2>Marcas de Aviões</h2>
             <hr/>
         </div>
     </div>
@@ -58,7 +58,7 @@
         </div>
 
         <!-- Botão de adicionar -->
-        <a href="{{route('marcas.create')}}" class="btn btn-sm btn-dark margin-top20">
+        <a href="{{route('marcas.create')}}" class="btn btn-sm btn-dark margin-top20 margin-bottom20">
             <i class="fa fa-plus-circle" aria-hidden="true"></i>
             Adicionar marca
         </a>
@@ -74,7 +74,7 @@
                 <tr>
                     <td>{{$brand->name}}</td>
                     <td>
-                        <a href="" class="btn btn-sm btn-primary">Editar</a>
+                        <a href="{{route('marcas.edit', $brand->id)}}" class="btn btn-sm btn-primary">Editar</a>
                         <a href="" class="btn btn-sm btn-danger">Excluir</a>
                     </td>
                 </tr>

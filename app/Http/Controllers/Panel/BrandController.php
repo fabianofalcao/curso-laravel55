@@ -74,7 +74,12 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brand = $this->brand->find($id);
+        if(!$brand)
+            return redirect()->back();
+
+        $title = "Editar Marca: {$brand->name}";
+        return view('panel.brands.edit', compact('title', 'brand'));
     }
 
     /**
@@ -86,7 +91,17 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $brand = $this->brand->find($id);
+        if(!$brand)
+            return redirect()->back();
+
+        $update = $brand->update($request->all());
+        if($update){
+            return redirect()->route('marcas.index')->with('success', 'Cadastro editado com sucesso!');
+        } else {
+            return redirect()->back()->with('error', 'Falha ao editar cadastro');
+        }
+
     }
 
     /**
