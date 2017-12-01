@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Request;
 
 class BrandStoreUpdadeFormRequestValidator extends FormRequest
 {
@@ -23,8 +24,9 @@ class BrandStoreUpdadeFormRequestValidator extends FormRequest
      */
     public function rules()
     {
+        $id = Request::segment(3);
         return [
-            'name' => 'required|min:3|max:100|unique:brands',
+            'name' => "required|min:3|max:100|unique:brands,name,{$id},id",
         ];
     }
 }

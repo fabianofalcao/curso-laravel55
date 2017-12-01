@@ -90,7 +90,7 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BrandStoreUpdadeFormRequestValidator $request, $id)
     {
         $brand = $this->brand->find($id);
         if(!$brand)
