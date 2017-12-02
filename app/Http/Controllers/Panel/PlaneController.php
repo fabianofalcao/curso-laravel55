@@ -120,4 +120,14 @@ class PlaneController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+        $dataForm = $request->except('_token');
+
+        $planes = $this->plane->search($request, $this->totalPage);
+        $title = "Aviões Cadastrados";
+
+        return view('panel.planes.index', compact('planes', 'title', 'dataForm'));
+    }
 }

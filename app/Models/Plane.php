@@ -30,6 +30,9 @@ class Plane extends Model
     public function search($request, $totalPage = 10)
     {
         $keySearch = $request->key_search;
-        return $this->where('name', 'LIKE', "%{$keySearch}%")->paginate($totalPage);
+        return $this->where('name', 'LIKE', "%{$keySearch}%")
+                    ->orWhere('qty_passengers', $keySearch)
+                    ->orWhere('class', $keySearch)
+                    ->paginate($totalPage);
     }
 }
