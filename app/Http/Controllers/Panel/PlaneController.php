@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Plane;
 use App\Models\Brand;
+use App\Http\Requests\PlaneStoreUpdadeFormRequestValidator;
 
 class PlaneController extends Controller
 {
@@ -48,7 +49,7 @@ class PlaneController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlaneStoreUpdadeFormRequestValidator $request)
     {
         $dataForm = $request->all();
         $insert = $this->plane->create($dataForm);
@@ -95,7 +96,7 @@ class PlaneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PlaneStoreUpdadeFormRequestValidator $request, $id)
     {
         $plane = $this->plane->find($id);
         if(!$plane)
