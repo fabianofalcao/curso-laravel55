@@ -25,7 +25,7 @@ class PlaneController extends Controller
     public function index()
     {
         $title = 'Aviões Cadastrados';
-        $planes = $this->plane->paginate($this->totalPage);
+        $planes = $this->plane->with('brand')->paginate($this->totalPage);
         return view('panel.planes.index', compact('title', 'planes'));
     }
 
@@ -50,7 +50,13 @@ class PlaneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataForm = $request->all();
+        $insert = $this->plane->create($dataForm);
+        if($insert){
+            return redirect()->route('avioes.index')->with('success', 'Cadastro realizado com sucesso!');
+        } else {
+            return redirect()->back()->with('error', 'Falha ao cadastrar')->withInput();
+        }
     }
 
     /**

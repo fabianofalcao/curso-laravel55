@@ -64,6 +64,7 @@
                                 <th>Nome</th>
                                 <th>Marca</th>
                                 <th>Total de Passageiros</th>
+                                <th>Classe</th>
                                 <th width="280" class="text-center">Ações</th>
                             </tr>
                             </thead>
@@ -71,8 +72,9 @@
                             @forelse($planes as $plane)
                                 <tr>
                                     <td>{{$plane->name}}</td>
-                                    <td>---</td>
+                                    <td>{{$plane->brand->name}}</td>
                                     <td>{{$plane->qty_passengers}}</td>
+                                    <td>{{$plane->classes($plane->class)}}</td>
                                     <td class="text-center">
                                         <a href="{{route('avioes.show', $plane->id)}}" class="btn btn-sm btn-secondary">Visualizar</a>
                                         <a href="{{route('avioes.edit', $plane->id)}}" class="btn btn-sm btn-primary">Editar</a>
