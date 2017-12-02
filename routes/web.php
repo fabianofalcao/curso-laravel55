@@ -16,8 +16,12 @@ $this->get('promocoes', 'Site\SiteController@promotions')->name('promotions');
 
 $this->group(['prefix' => 'panel', 'namespace' => 'Panel'], function (){
     $this->get('/', 'PanelController@index')->name('panel');
+
     $this->any('marcas/pesquisa', 'BrandController@search')->name('marcas.search');
     $this->resource('marcas', 'BrandController');
+
+    $this->any('avioes/pesquisa', 'PlaneController@search')->name('avioes.search');
+    $this->resource('avioes', 'PlaneController');
 });
 
 

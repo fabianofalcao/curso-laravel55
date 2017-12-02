@@ -41,6 +41,13 @@
         </a>
       </li>
 
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Aviões">
+        <a class="nav-link" href="{{route('avioes.index')}}">
+          <i class="fa fa-fw fa-plane"></i>
+          <span class="nav-link-text">Aviões</span>
+        </a>
+      </li>
+
       <!--
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">

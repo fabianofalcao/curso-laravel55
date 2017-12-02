@@ -15,14 +15,6 @@
     </ol>
     <!-- Fim Breadcrumbs-->
 
-    <!-- Titulo da Página -->
-    <div class="row">
-        <div class="col-12">
-            <h2>{{$title or 'Gestão de Marcas'}}</h2>
-            <hr/>
-        </div>
-    </div>
-
     <!-- Inicio Mensagem de erro -->
     <div class="messages">
         @include('panel.includes.alerts')
@@ -32,7 +24,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-table"></i> Detalhes da marca: {{$brand->name}}
+                    <i class="fa fa-university"></i> Detalhes da marca: {{$brand->name}}
                 </div>
                 <div class="card-body">
                     <ul>

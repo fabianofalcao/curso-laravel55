@@ -24,7 +24,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $title = 'Marcas de Aviões';
+        $title = 'Marcas Cadastradas';
         $brands = $this->brand->paginate($this->totalPage);
         return view('panel.brands.index', compact('title', 'brands'));
     }

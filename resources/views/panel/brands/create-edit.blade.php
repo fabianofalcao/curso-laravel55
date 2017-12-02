@@ -17,7 +17,7 @@
 
     <!-- Inicio Mensagem de erro -->
     <div class="messages">
-        @include('panel.includes.erros')
+        @include('panel.includes.errors')
     </div>
 
     <div class="row">
