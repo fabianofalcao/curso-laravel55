@@ -124,9 +124,9 @@
                     </nav>
                     -->
                         @if(isset($dataForm))
-                            {!!  $brands->appends($dataForm)->links() !!}
+                            {!!  $brands->appends($dataForm)->links('vendor.pagination.bootstrap-4') !!}
                         @else
-                            {!! $brands->links() !!}
+                            {!! $brands->links('vendor.pagination.bootstrap-4') !!}
                         @endif
                     </div>
                 </div>
