@@ -78,7 +78,14 @@ class PlaneController extends Controller
      */
     public function edit($id)
     {
-        //
+        $plane = $this->plane->find($id);
+        if(!$plane)
+            return redirect()->back();
+
+        $title = "Editar Avião";
+        $brands = Brand::pluck('name', 'id');
+        $classes = $this->plane->classes();
+        return view('panel.planes.edit', compact('title', 'plane', 'brands', 'classes'));
     }
 
     /**
@@ -90,7 +97,16 @@ class PlaneController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $plane = $this->plane->find($id);
+        if(!$plane)
+            return redirect()->back();
+
+        $update = $plane->update($request->all());
+        if($update){
+            return redirect()->route('avioes.index')->with('success', 'Cadastro editado com sucesso!');
+        } else {
+            return redirect()->back()->with('error', 'Falha ao editar cadastro');
+        }
     }
 
     /**
