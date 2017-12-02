@@ -10,7 +10,7 @@ use App\Http\Requests\BrandStoreUpdadeFormRequestValidator;
 class BrandController extends Controller
 {
     private $brand;
-    protected $totalPage = 1;
+    protected $totalPage = 10;
 
     public function __construct(Brand $brand)
     {

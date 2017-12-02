@@ -23,28 +23,9 @@
 
     <!-- Inicio Mensagem de erro -->
     <div class="messages">
-        @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Sucesso.</strong> {{session('success')}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
-        @if(session('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Erro.</strong> {{session('error')}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
+        @include('panel.includes.alerts')
     </div>
     <!-- Fim Mensagem de erro -->
-
-
-
-
 
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -53,21 +34,35 @@
                     <i class="fa fa-university"></i> Detalhes da marca
                 </div>
                 <div class="card-body">
-                    <div class="form-search pull-right">
-                        <!-- <form class="form form-inline"> -->
-                    {!! Form::open(['route' => 'marcas.search', 'class' => 'form form-inline']) !!}
-                    <!-- <input type="text" name="nome" placeholder="Nome:" class="form-control form-control-sm"> -->
-                        {!! Form::text('key_search', null, ['placeholder' => 'O que deseja encontar?']) !!}
-                        <button class="btn btn-sm btn-dark">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                            Pesquisar
-                        </button>
-                        {!! Form::close() !!}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-search pull-right">
+                                <!-- <form class="form form-inline"> -->
+                            {!! Form::open(['route' => 'marcas.search', 'class' => 'form form-inline']) !!}
+                            <!-- <input type="text" name="nome" placeholder="Nome:" class="form-control form-control-sm"> -->
+                                {!! Form::text('key_search', null, ['placeholder' => 'O que deseja encontar?']) !!}
+                                <button class="btn btn-sm btn-dark">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    Pesquisar
+                                </button>
+                                {!! Form::close() !!}
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Botão de adicionar -->
-                    <a href="{{route('marcas.create')}}" class="btn btn-sm btn-dark margin-top20 margin-bottom20">
+                    @if(isset($dataForm['key_search']))
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-secondary margin-top10">
+                                    <a href=""><i class="fa fa-refresh" aria-hidden="true"></i>
+                                    Resultados para: <strong>{{$dataForm['key_search']}}</strong></a>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
 
+                <!-- Botão de adicionar -->
+                    <a href="{{route('marcas.create')}}" class="btn btn-sm btn-dark margin-bottom20">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         Adicionar marca
                     </a>

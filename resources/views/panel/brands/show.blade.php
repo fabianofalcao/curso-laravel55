@@ -25,14 +25,7 @@
 
     <!-- Inicio Mensagem de erro -->
     <div class="messages">
-        @if(session('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Opss!</strong> {{session('error')}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
+        @include('panel.includes.alerts')
     </div>
 
     <div class="row">
