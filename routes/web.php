@@ -23,6 +23,8 @@ $this->group(['prefix' => 'panel', 'namespace' => 'Panel'], function (){
 
     $this->get('estados', 'StateController@index')->name('estados.index');
     $this->any('estados/pesquisa', 'StateController@search')->name('estados.search');
+    $this->post('estados/{initials}/cidades/search', 'CityController@search')->name('estados.cities.search');
+    $this->get('estados/{initials}/cidades', 'CityController@index')->name('estado.cidades');
 
     $this->any('avioes/pesquisa', 'PlaneController@search')->name('avioes.search');
     $this->resource('avioes', 'PlaneController');
