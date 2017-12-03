@@ -83,6 +83,7 @@
                                     <td class="text-center">
                                         <a href="{{route('marcas.show', $brand->id)}}" class="btn btn-sm btn-secondary">Visualizar</a>
                                         <a href="{{route('marcas.edit', $brand->id)}}" class="btn btn-sm btn-primary">Editar</a>
+                                        <a href="{{route('marcas.avioes', $brand->id)}}" class="btn btn-sm btn-dark">Aviões</a>
                                         <!-- <a href="" class="btn btn-sm btn-danger">Excluir</a> -->
                                     </td>
                                 </tr>
