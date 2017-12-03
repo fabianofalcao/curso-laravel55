@@ -21,6 +21,9 @@ $this->group(['prefix' => 'panel', 'namespace' => 'Panel'], function (){
     $this->get('marcas/{id}/avioes', 'BrandController@planes')->name('marcas.avioes');
     $this->resource('marcas', 'BrandController');
 
+    $this->get('estados', 'StateController@index')->name('estados.index');
+    $this->any('estados/pesquisa', 'StateController@search')->name('estados.search');
+
     $this->any('avioes/pesquisa', 'PlaneController@search')->name('avioes.search');
     $this->resource('avioes', 'PlaneController');
 });

@@ -48,6 +48,20 @@
         </a>
       </li>
 
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Estados">
+        <a class="nav-link" href="{{route('estados.index')}}">
+          <i class="fa fa-fw fa-globe"></i>
+          <span class="nav-link-text">Estados</span>
+        </a>
+      </li>
+
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Cidades">
+        <a class="nav-link" href="{{route('avioes.index')}}">
+          <i class="fa fa-fw fa-location-arrow"></i>
+          <span class="nav-link-text">Cidades</span>
+        </a>
+      </li>
+
       <!--
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
