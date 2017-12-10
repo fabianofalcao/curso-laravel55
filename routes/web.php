@@ -28,6 +28,8 @@ $this->group(['prefix' => 'panel', 'namespace' => 'Panel'], function (){
 
     $this->any('avioes/pesquisa', 'PlaneController@search')->name('avioes.search');
     $this->resource('avioes', 'PlaneController');
+
+    $this->resource('voos', 'FlightController');
 });
 
 

@@ -60,6 +60,12 @@
           <i class="fa fa-fw fa-location-arrow"></i>
           <span class="nav-link-text">Cidades</span>
         </a>
+
+      </li><li class="nav-item" data-toggle="tooltip" data-placement="right" title="Voos">
+        <a class="nav-link" href="{{route('voos.index')}}">
+          <i class="fa fa-fw fa-fighter-jet"></i>
+          <span class="nav-link-text">Voos</span>
+        </a>
       </li>
 
       <!--
