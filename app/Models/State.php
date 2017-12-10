@@ -13,4 +13,9 @@ class State extends Model
                     ->orWhere('initials', 'LIKE', "%{$keySearch}%")
                     ->paginate($totalPage);
     }
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
 }
