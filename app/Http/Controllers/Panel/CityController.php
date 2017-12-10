@@ -20,4 +20,19 @@ class CityController extends Controller
         $title = "Cidades Brasileiras";
         return view('panel.cities.index', compact('cities', 'title', 'state'));
     }
+
+    public function search(Request $request, $initials = 'MG')
+    {
+        $state = State::where('initials', $initials)->get()->first();
+        //dd($state);
+        if(!$state)
+            return redirect()->back();
+        $dataForm = $request->all();
+        $keySearch = $request->key_search;
+
+        $cities = $state->searchCities($keySearch, $this->totalPage);
+
+        $title = "Cidades Brasileiras";
+        return view('panel.cities.index', compact('cities', 'title', 'state', 'dataForm'));
+    }
 }
