@@ -24,7 +24,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-plane"></i> Cidades do estado: {{$state->initials}}
+                    <i class="fa fa-plane"></i> Cidades do estado ({{$cities->count()}}) - ({{$cities->total()}}): {{$state->initials}}
                 </div>
                 <div class="card-body">
 
@@ -75,6 +75,13 @@
                             @endforelse
                             </tbody>
                         </table>
+
+                        @if(isset($dataForm))
+                            {!!  $cities->appends($dataForm)->links('vendor.pagination.bootstrap-4') !!}
+                        @else
+                            {!! $cities->links('vendor.pagination.bootstrap-4') !!}
+                        @endif
+
                     </div>
                 </div>
             </div>
