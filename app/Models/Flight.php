@@ -6,5 +6,46 @@ use Illuminate\Database\Eloquent\Model;
 
 class Flight extends Model
 {
-    //
+    protected $fillable = [
+        'plane_id',
+        'airport_origin_id',
+        'airport_destination_id',
+        'date',
+        'time_duration',
+        'hour_output',
+        'arrival_time',
+        'old_price',
+        'price',
+        'total_plots',
+        'is_promotion',
+        'image',
+        'qty_stops',
+        'description',
+    ];
+
+    public function getItems()
+    {
+        return $this->with(['origin', 'destination'])
+            ->paginate($this->totalPage);
+    }
+
+    public function newFlight($request)
+    {
+
+        $data = $request->all();
+        //dd($data);
+        //$data = $request->all();
+        return $this->create($data);
+    }
+
+    public function origin()
+    {
+        return $this->belongsTo(Airport::class, 'airport_origin_id');
+    }
+
+    public function destination()
+    {
+        return $this->belongsTo(Airport::class, 'airport_destination_id');
+    }
+
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Panel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Flight;
+use App\Models\Plane;
+use App\Models\Airport;
 
 class FlightController extends Controller
 {
@@ -24,7 +26,8 @@ class FlightController extends Controller
     public function index()
     {
         $title = 'Voos Cadastrados';
-        $flights = $this->flight->paginate($this->totalPage);
+        //$flights = $this->flight->with(['origin', 'destination'])->paginate($this->totalPage);
+        $flights = $this->flight->getItems();
         return view('panel.flights.index', compact('title', 'flights'));
     }
 
@@ -35,7 +38,10 @@ class FlightController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Adicionar Voo";
+        $planes = Plane::pluck('name', 'id');
+        $airports = Airport::pluck('name', 'id');
+        return view('panel.flights.create', compact('title', 'planes', 'airports'));
     }
 
     /**
@@ -46,7 +52,15 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($this->flight->newFlight($request))
+            return redirect()
+                ->route('voos.index')
+                ->with('success', 'Sucesso ao cadastrar');
+        else
+            return redirect()
+                ->back()
+                ->with('error', 'Falha ao cadastrar')
+                ->withInput();
     }
 
     /**
@@ -68,7 +82,14 @@ class FlightController extends Controller
      */
     public function edit($id)
     {
-        //
+        $flight = $this->flight->find($id);
+        if(!$flight)
+            return redirect()->back();
+        $title = 'Editar Voo';
+        $planes = Plane::pluck('name', 'id');
+        $airports = Airport::pluck('name', 'id');
+
+        return view('panel.flights.edit', compact('title', 'flight', 'planes', 'airports'));
     }
 
     /**
@@ -80,7 +101,13 @@ class FlightController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $flight = $this->flight->find($id);
+        if(!$flight)
+            return redirect()->back();
+        if($flight->update($request->all()))
+            return redirect()->route('voos.index')->with('success', 'Cadastro editado com sucesso');
+        else
+            return redirect()->back()->with('error', 'Falha ao atualizar')->withInput();
     }
 
     /**

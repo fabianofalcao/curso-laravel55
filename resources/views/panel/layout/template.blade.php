@@ -252,7 +252,7 @@
 <footer class="sticky-footer">
   <div class="container">
     <div class="text-center">
-      <small>Copyright © FAFSistemas 2017</small>
+      <small>Copyright © FalcãoSistemas 2018</small>
     </div>
   </div>
 </footer>

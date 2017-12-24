@@ -62,7 +62,7 @@
                 @endif
 
                 <!-- Botão de adicionar -->
-                    <a href="{{route('marcas.create')}}" class="btn btn-sm btn-dark margin-bottom20">
+                    <a href="{{route('voos.create')}}" class="btn btn-sm btn-dark margin-bottom20">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         Adicionar voo
                     </a>
@@ -84,15 +84,15 @@
                             <tbody>
                             @forelse($flights as $fligth)
                                 <tr>
-                                    <td>{{$flight->id}}</td>
-                                    <td>{{$flight->airport_origin_id}}</td>
-                                    <td>{{$flight->airport_destination_id}}</td>
-                                    <td>{{$flight->qty_stops}}</td>
-                                    <td>{{$flight->date}}</td>
-                                    <td>{{$flight->hour_output}}</td>
+                                    <td>{{$fligth->id}}</td>
+                                    <td>{{$fligth->origin->name}}</td>
+                                    <td>{{$fligth->destination->name}}</td>
+                                    <td>{{$fligth->qty_stops}}</td>
+                                    <td>{{$fligth->date}}</td>
+                                    <td>{{$fligth->hour_output}}</td>
                                     <td class="text-center">
-                                        <a href="{{route('marcas.show', $fligth->id)}}" class="btn btn-sm btn-secondary">Visualizar</a>
-                                        <a href="{{route('marcas.edit', $fligth->id)}}" class="btn btn-sm btn-primary">Editar</a>
+                                        <a href="{{route('voos.show', $fligth->id)}}" class="btn btn-sm btn-secondary">Visualizar</a>
+                                        <a href="{{route('voos.edit', $fligth->id)}}" class="btn btn-sm btn-primary">Editar</a>
                                     </td>
                                 </tr>
                             @empty
