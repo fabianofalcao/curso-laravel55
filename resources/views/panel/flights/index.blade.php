@@ -31,7 +31,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-university"></i> Voos Cadastrados
+                    <i class="fa fa-fighter-jet"></i> Voos Cadastrados
                 </div>
                 <div class="card-body">
                     <div class="row">

@@ -9,7 +9,7 @@
             <a href="{{route('panel')}}">Home page</a>
         </li>
         <li class="breadcrumb-item">
-            <a href="{{route('avioes.index')}}">Voos</a>
+            <a href="{{route('voos.index')}}">Voos</a>
         </li>
         <li class="breadcrumb-item active">{{$title or 'Gestão de Voos'}}</li>
     </ol>
@@ -24,7 +24,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-plane"></i> {{$title or 'Gestão de Voos'}}
+                    <i class="fa fa-fighter-jet"></i> {{$title or 'Gestão de Voos'}}
                 </div>
                 <div class="card-body">
                     {!! Form::model($flight, ['route' => ['voos.update', $flight->id], 'name' => 'form_upd_flight', 'id' => 'form_upd_flight', 'method' => 'PUT', 'files' => true]) !!}

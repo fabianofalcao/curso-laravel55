@@ -24,7 +24,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-plane"></i> {{$title or 'Gestão de Voos'}}
+                    <i class="fa fa-fighter-jet"></i> {{$title or 'Gestão de Voos'}}
                 </div>
                 <div class="card-body">
                     {!! Form::open(['route' => 'voos.store', 'name' => 'form_add_flights', 'id' => 'form_add_flights', 'method' => 'POST', 'files' => true]) !!}
