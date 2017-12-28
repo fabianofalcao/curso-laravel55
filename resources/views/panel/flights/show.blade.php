@@ -43,25 +43,25 @@
                             Data: <strong>{{$flight->date}}</strong>
                         </li>
                         <li>
-                            Duração: <strong>{{$flight->time_duration}}</strong>
+                            Duração: <strong>{{formatDateAndTime($flight->time_duration, 'H:i')}}</strong>
                         </li>
                         <li>
-                            Saída: <strong>{{$flight->hour_output}}</strong>
+                            Saída: <strong>{{formatDateAndTime($flight->hour_output, 'H:i')}}</strong>
                         </li>
                         <li>
-                            Chegada: <strong>{{$flight->arrival_time}}</strong>
+                            Chegada: <strong>{{formatDateAndTime($flight->arrival_time, 'H:i')}}</strong>
                         </li>
                         <li>
-                            Valor Anterior: <strong>{{$flight->old_price}}</strong>
+                            Valor Anterior: <strong>R$ {{number_format($flight->old_price, 2, ',', '.')}}</strong>
                         </li>
                         <li>
-                            Valor Atual: <strong>{{$flight->price}}</strong>
+                            Valor Atual: <strong>R$ {{number_format($flight->price, 2, ',', '.')}}</strong>
                         </li>
                         <li>
                             Total de Parcelas: <strong>{{$flight->total_plots}}</strong>
                         </li>
                         <li>
-                            Promoção: <strong>{{$flight->is_promotion}}</strong>
+                            Promoção: <strong>{{($flight->is_promotion ? 'sim' : 'não')}}</strong>
                         </li>
                         <li>
                             Paradas: <strong>{{$flight->qty_stops}}</strong>

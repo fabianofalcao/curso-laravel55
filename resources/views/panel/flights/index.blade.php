@@ -88,8 +88,8 @@
                                     <td>{{$fligth->origin->name}}</td>
                                     <td>{{$fligth->destination->name}}</td>
                                     <td>{{$fligth->qty_stops}}</td>
-                                    <td>{{$fligth->date}}</td>
-                                    <td>{{$fligth->hour_output}}</td>
+                                    <td>{{formatDateAndTime($fligth->date)}}</td>
+                                    <td>{{formatDateAndTime($fligth->hour_output, 'H:i')}}</td>
                                     <td class="text-center">
                                         <a href="{{route('voos.show', $fligth->id)}}" class="btn btn-sm btn-secondary">Visualizar</a>
                                         <a href="{{route('voos.edit', $fligth->id)}}" class="btn btn-sm btn-primary">Editar</a>
