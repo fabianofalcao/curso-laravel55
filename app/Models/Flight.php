@@ -29,10 +29,11 @@ class Flight extends Model
             ->paginate($this->totalPage);
     }
 
-    public function newFlight($request)
+    public function newFlight($request, $nameFile = '')
     {
 
         $data = $request->all();
+        $data['image'] = $nameFile;
         //dd($data);
         //$data = $request->all();
         return $this->create($data);

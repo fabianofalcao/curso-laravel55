@@ -73,6 +73,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Imagem</th>
                                 <th>Origem</th>
                                 <th>Destino</th>
                                 <th>Paradas</th>
@@ -82,17 +83,24 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($flights as $fligth)
+                            @forelse($flights as $flight)
                                 <tr>
-                                    <td>{{$fligth->id}}</td>
-                                    <td>{{$fligth->origin->name}}</td>
-                                    <td>{{$fligth->destination->name}}</td>
-                                    <td>{{$fligth->qty_stops}}</td>
-                                    <td>{{formatDateAndTime($fligth->date)}}</td>
-                                    <td>{{formatDateAndTime($fligth->hour_output, 'H:i')}}</td>
+                                    <td>{{$flight->id}}</td>
+                                    <td>
+                                    @if($flight->image)
+                                        <img src="{{url("storage/flights/{$flight->image}")}}" alt="{{$flight->id}}" style="max-width: 60px;">
+                                    @else
+                                        <img src="{{url('assets/panel/imgs/no-image.png')}}" alt="{{$flight->id}}" style="max-width: 100px;">
+                                    @endif
+                                    </td>
+                                    <td>{{$flight->origin->name}}</td>
+                                    <td>{{$flight->destination->name}}</td>
+                                    <td>{{$flight->qty_stops}}</td>
+                                    <td>{{formatDateAndTime($flight->date)}}</td>
+                                    <td>{{formatDateAndTime($flight->hour_output, 'H:i')}}</td>
                                     <td class="text-center">
-                                        <a href="{{route('voos.show', $fligth->id)}}" class="btn btn-sm btn-secondary">Visualizar</a>
-                                        <a href="{{route('voos.edit', $fligth->id)}}" class="btn btn-sm btn-primary">Editar</a>
+                                        <a href="{{route('voos.show', $flight->id)}}" class="btn btn-sm btn-secondary">Visualizar</a>
+                                        <a href="{{route('voos.edit', $flight->id)}}" class="btn btn-sm btn-primary">Editar</a>
                                     </td>
                                 </tr>
                             @empty

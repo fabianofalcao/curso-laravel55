@@ -52,13 +52,17 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
+        $nameFile = null;
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
-            $nameFile = uniqid(date('HisYmd')) . '.' . $request->image->extension();
-            $request->image->storeAs('flights', $nameFile);
+            $nameFile = uniqid(date('HisYmd')).'.'.$request->image->extension();
+
+            if (!$request->image->storeAs('flights', $nameFile))
+                return redirect()->back()->with('error', 'Falha ao fazer upload')->withInput();
         }
 
-        if($this->flight->newFlight($request))
+
+        if($this->flight->newFlight($request, $nameFile))
             return redirect()
                 ->route('voos.index')
                 ->with('success', 'Sucesso ao cadastrar');
