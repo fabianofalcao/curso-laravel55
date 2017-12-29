@@ -44,6 +44,8 @@
                                 {!! Form::date('date', null, ['class' => 'form-control form-control-sm']) !!}
                                 {!! Form::time('hour_output', null, ['class' => 'form-control form-control-sm']) !!}
                                 {!! Form::number('total_stops', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Total Paradas']) !!}
+                                {!! Form::select('origin', $airports, null, ['class' => 'form-control form-control-sm']) !!}
+                                {!! Form::select('destination', $airports, null, ['class' => 'form-control form-control-sm']) !!}
 
                                 <button class="btn btn-sm btn-dark">
                                     <i class="fa fa-search" aria-hidden="true"></i>
@@ -54,12 +56,27 @@
                         </div>
                     </div>
 
-                    @if(isset($dataForm['key_search']))
+                    @if(isset($dataForm))
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-secondary margin-top10">
-                                    <a href=""><i class="fa fa-refresh" aria-hidden="true"></i>
-                                        Resultados para: <strong>{{$dataForm['key_search']}}</strong></a>
+                                    <a href="{{route('voos.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i>
+                                    </a>
+                                    @if( isset($dataForm['code']) )
+                                        <p>Código: <strong>{{$dataForm['code']}}</strong></p>
+                                    @endif
+
+                                    @if( isset($dataForm['date']) )
+                                        <p>Data: <strong>{{formatDateAndTime($dataForm['date'])}}</strong></p>
+                                    @endif
+
+                                    @if( isset($dataForm['hour_output']) )
+                                        <p>Hora de Saída: <strong>{{$dataForm['hour_output']}}</strong></p>
+                                    @endif
+
+                                    @if( isset($dataForm['total_stops']) )
+                                        <p>Total de Paradas: <strong>{{$dataForm['total_stops']}}</strong></p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -28,7 +28,9 @@ class FlightController extends Controller
         $title = 'Voos Cadastrados';
         //$flights = $this->flight->with(['origin', 'destination'])->paginate($this->totalPage);
         $flights = $this->flight->getItems();
-        return view('panel.flights.index', compact('title', 'flights'));
+        $airports = Airport::pluck('name', 'id');
+        $airports->prepend('Escolha o aeroporto', '');
+        return view('panel.flights.index', compact('title', 'flights', 'airports'));
     }
 
     /**
@@ -164,8 +166,9 @@ class FlightController extends Controller
 
         $title = 'Resultados dos voos pesquisado';
 
-        //$airports = Airport::pluck('name', 'id');
+        $airports = Airport::pluck('name', 'id');
+        $airports->prepend('Escolha o aeroporto', '');
 
-        return view('panel.flights.index', compact('title', 'flights', 'dataForm'));
+        return view('panel.flights.index', compact('title', 'flights', 'dataForm', 'airports'));
     }
 }
