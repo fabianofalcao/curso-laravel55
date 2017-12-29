@@ -30,6 +30,7 @@ $this->group(['prefix' => 'panel', 'namespace' => 'Panel'], function (){
     $this->resource('avioes', 'PlaneController');
 
     $this->resource('voos', 'FlightController');
+    $this->any('voos/pesquisa', 'FlightController@search')->name('voos.search');
 });
 
 

@@ -38,9 +38,13 @@
                         <div class="col-12">
                             <div class="form-search pull-right">
                                 <!-- <form class="form form-inline"> -->
-                            {!! Form::open(['route' => 'marcas.search', 'class' => 'form form-inline']) !!}
+                            {!! Form::open(['route' => 'voos.search', 'class' => 'form form-inline']) !!}
                             <!-- <input type="text" name="nome" placeholder="Nome:" class="form-control form-control-sm"> -->
-                                {!! Form::text('key_search', null, ['placeholder' => 'O que deseja encontar?']) !!}
+                                {!! Form::number('code', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Código']) !!}
+                                {!! Form::date('date', null, ['class' => 'form-control form-control-sm']) !!}
+                                {!! Form::time('hour_output', null, ['class' => 'form-control form-control-sm']) !!}
+                                {!! Form::number('total_stops', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Total Paradas']) !!}
+
                                 <button class="btn btn-sm btn-dark">
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                     Pesquisar
