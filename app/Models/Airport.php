@@ -12,6 +12,7 @@ class Airport extends Model
         'latitude',
         'longitude',
         'number',
+        'district',
         'zip_code',
         'address',
         'complement',

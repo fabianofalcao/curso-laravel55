@@ -31,7 +31,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-fighter-jet"></i> Detalhes do aeroporto: {{$airport->id}}
+                    <i class="fa fa-thumb-tack"></i> Detalhes do aeroporto: {{$airport->id}}
                 </div>
 
                 <div class="card-body">
@@ -52,7 +52,7 @@
                             Longitude: <strong>{{$airport->longitude}}</strong>
                         </li>
                         <li>
-                            Endereço: <strong>{{$airport->address}}, nº {{$airport->number}}</strong>
+                            Endereço: <strong>{{$airport->address}}, nº {{$airport->number}} - {{$airport->district}}</strong>
                         </li>
                         <li>
                             CEP: <strong>{{$airport->zip_code}}</strong>

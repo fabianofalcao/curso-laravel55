@@ -24,6 +24,11 @@
 </div>
 
 <div class="form-group">
+    <label for="district">Bairro</label>
+    {!! Form::text('district', null, ['class' => 'form-control form-control-sm']) !!}
+</div>
+
+<div class="form-group">
     <label for="zip_code">Código Postal</label>
     {!! Form::text('zip_code', null, ['class' => 'form-control form-control-sm']) !!}
 </div>
