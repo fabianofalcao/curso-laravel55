@@ -60,8 +60,6 @@ class AirportController extends Controller
 
         $title = "Cadastrar novo aeroporto na cidade {$city->name}";
 
-        //$cities = $this->city->pluck('name', 'id');
-
         return view('panel.airports.create', compact('title', 'city', 'stateInitials'));
     }
 
@@ -77,7 +75,7 @@ class AirportController extends Controller
         if(!$city)
             return redirect()->back();
 
-        if ( $city->airports()->create($request->all()) )
+        if ($city->airports()->create($request->all()) )
             return redirect()->route('aeroportos.index', $idCity)->with('success', 'Aeroporto cadastrado com sucesso');
         else
             return redirect()->back()->with('error', 'Falha ao cadastrar aeroporto')->withInput();
@@ -102,9 +100,19 @@ class AirportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idCity, $id)
     {
-        //
+        $airport = $this->airport->with('city')->find($id);
+        if(!$airport)
+            return redirect()->back();
+        else {
+            $city = $airport->city;
+            $state = State::where('id', $city->state_id)->get()->first();
+            $stateInitials = $state->initials;
+        }
+        $title = "Editar aeroporto {$airport->name}";
+
+        return view('panel.airports.edit', compact('title', 'city', 'stateInitials', 'airport'));
     }
 
     /**
@@ -114,9 +122,20 @@ class AirportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idCity, $id)
     {
-        //
+        $airport = $this->airport->with('city')->find($id);
+        if(!$airport)
+            return redirect()->back();
+        else {
+            $city = $airport->city;
+            $state = State::where('id', $city->state_id)->get()->first();
+            $stateInitials = $state->initials;
+        }
+        if ($airport->update($request->all()) )
+            return redirect()->route('aeroportos.index', $idCity)->with('success', 'Aeroporto editado com sucesso');
+        else
+            return redirect()->back()->with('error', 'Falha ao editar aeroporto')->withInput();
     }
 
     /**
