@@ -29,7 +29,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-university"></i> Aeroportos de {{$city->name}} - {{$stateInitials}}
+                    <i class="fa fa-thumb-tack"></i> Aeroportos de {{$city->name}} - {{$stateInitials}}
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -60,7 +60,7 @@
                     @endif
 
                     <!-- Botão de adicionar -->
-                    <a href="{{route('marcas.create')}}" class="btn btn-sm btn-dark margin-bottom20">
+                    <a href="{{route('aeroportos.create', $city->id)}}" class="btn btn-sm btn-dark margin-bottom20">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         Adicionar aeroporto
                     </a>
