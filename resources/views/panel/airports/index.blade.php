@@ -36,7 +36,7 @@
                         <div class="col-12">
                             <div class="form-search pull-right">
                                 <!-- <form class="form form-inline"> -->
-                            {!! Form::open(['route' => 'marcas.search', 'class' => 'form form-inline']) !!}
+                                {!! Form::open(['route' => ['aeroportos.search', $city->id], 'class' => 'form form-inline']) !!}
                             <!-- <input type="text" name="nome" placeholder="Nome:" class="form-control form-control-sm"> -->
                                 {!! Form::text('key_search', null, ['placeholder' => 'O que deseja encontar?']) !!}
                                 <button class="btn btn-sm btn-dark">
@@ -79,7 +79,11 @@
                             @forelse($airports as $airport)
                                 <tr>
                                     <td>{{$airport->name}}</td>
-                                    <td>{{$airport->address}}</td>
+                                    @if($airport->number)
+                                    <td>{{$airport->address}}, nº {{$airport->number}} - {{$airport->district}}</td>
+                                    @else
+                                    <td>{{$airport->address}} - {{$airport->district}}</td>
+                                    @endif
                                     <td class="text-center">
                                         <a href="{{route('aeroportos.show', [$city->id, $airport->id])}}" class="btn btn-sm btn-secondary">Visualizar</a>
                                         <a href="{{route('aeroportos.edit', [$city->id, $airport->id])}}" class="btn btn-sm btn-primary">Editar</a>

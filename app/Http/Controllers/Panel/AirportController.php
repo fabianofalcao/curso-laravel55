@@ -165,4 +165,18 @@ class AirportController extends Controller
         else
             return redirect()->back()->with('error', 'Falha ao excluir aeroporto');
     }
+
+    public function search($idCity, Request $request)
+    {
+        $dataForm = $request->except('_token');
+        $city = City::find($idCity);
+        if(!$city)
+            return redirect()->back();
+        $state = State::where('id', $city->state_id)->get()->first();
+        $stateInitials = $state->initials;    
+
+        $airports = $this->airport->search($city, $request, $this->totalPage);
+        $title = "Aeroportos da cidade: {$city->name}";
+        return view('panel.airports.index', compact('city', 'title', 'airports', 'dataForm', 'stateInitials'));
+    }
 }
