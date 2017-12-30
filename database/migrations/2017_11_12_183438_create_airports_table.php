@@ -24,7 +24,7 @@ class CreateAirportsTable extends Migration
             $table->string('latitude', 15)->nullable();
             $table->string('longitude', 15)->nullable();
             $table->string('address', 100)->nullable();
-            $table->integer('number')->nullable();
+            $table->string('number', 10)->nullable();
             $table->string('zip_code', 11)->unique()->nullable();
             $table->string('complement', 190)->nullable();
             $table->timestamps();

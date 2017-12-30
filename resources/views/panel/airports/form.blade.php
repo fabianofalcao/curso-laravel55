@@ -20,7 +20,7 @@
 
 <div class="form-group">
     <label for="number">Número</label>
-    {!! Form::number('number', null, ['class' => 'form-control form-control-sm']) !!}
+    {!! Form::text('number', null, ['class' => 'form-control form-control-sm']) !!}
 </div>
 
 <div class="form-group">

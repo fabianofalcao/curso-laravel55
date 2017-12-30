@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Airport;
 use App\Models\City;
 use App\Models\State;
+use App\Http\Requests\AirportStoreUpdateFormRequestValidator;
 
 class AirportController extends Controller
 {
@@ -69,7 +70,7 @@ class AirportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $idCity)
+    public function store(AirportStoreUpdateFormRequestValidator $request, $idCity)
     {
         $city = $this->city->find($idCity);
         if(!$city)
@@ -132,7 +133,7 @@ class AirportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $idCity, $id)
+    public function update(AirportStoreUpdateFormRequestValidator $request, $idCity, $id)
     {
         $airport = $this->airport->with('city')->find($id);
         if(!$airport)
