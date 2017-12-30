@@ -31,6 +31,11 @@ $this->group(['prefix' => 'panel', 'namespace' => 'Panel'], function (){
 
     $this->resource('voos', 'FlightController');
     $this->any('voos/pesquisa', 'FlightController@search')->name('voos.search');
+
+    $this->resource('cidades/{id}/aeroportos', 'AirportController');
+
+
+
 });
 
 
