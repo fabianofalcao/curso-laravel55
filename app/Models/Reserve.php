@@ -43,4 +43,13 @@ class Reserve extends Model
         return $this->where('id', $id)->update(['status' => $newStatus]);
         
     }
+
+    public function search($request, $totalPage)
+    {
+        $reserves = $this->join('users', 'users.id', '=', 'reserves.user_id')
+                         ->join('flights', 'flights.id', '=', 'reserves.flight_id')
+                         ->select('reserves.*', 'users.name as user_name', 'users.email as user_email', 'users.id as user_id', 'flights.id as flight_id', 'flights.date as flight_date')
+                         ->paginate($totalPage);
+        return $reserves;
+    }
 }

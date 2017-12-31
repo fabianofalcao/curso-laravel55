@@ -8,6 +8,9 @@
         <li class="breadcrumb-item">
             <a href="{{route('panel')}}">Home page</a>
         </li>
+        <li class="breadcrumb-item">
+            <a href="{{route('reservas.index')}}">Reservas de passagens</a>
+        </li>
         <li class="breadcrumb-item active"> {{$title or 'Gestão de reservas de passagem'}}</li>
     </ol>
     
@@ -75,8 +78,8 @@
                             @forelse($reserves as $reserve)
                                 <tr>
                                     <td>{{$reserve->id}}</td>
-                                    <td>{{$reserve->user->name}}</td>
-                                    <td>{{$reserve->flight->id}} - ({{(formatDateAndTime($reserve->flight->date))}})</td>
+                                    <td>{{$reserve->user_name}}</td>
+                                    <td>{{$reserve->flight_id}} ({{ formatDateAndTime($reserve->flight_date) }})</td>
                                     <td>{{$reserve->status($reserve->status)}}</td>
                                     <td class="text-center">
                                         <a href="{{route('reservas.edit', $reserve->id)}}" class="btn btn-sm btn-primary">Atualizar Status</a>

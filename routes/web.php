@@ -41,6 +41,7 @@ $this->group(['prefix' => 'panel', 'namespace' => 'Panel'], function (){
     $this->resource('reservas', 'ReserveController',[
         'except' => ['show', 'destroy']
     ]);
+    $this->any('reservas/pesquisa', 'ReserveController@search')->name('reservas.search');
 });
 
 
