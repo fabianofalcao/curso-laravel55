@@ -34,6 +34,9 @@ $this->group(['prefix' => 'panel', 'namespace' => 'Panel'], function (){
 
     $this->any('cidades/{id}/aeroportos/search', 'AirportController@search')->name('aeroportos.search');   
     $this->resource('cidades/{id}/aeroportos', 'AirportController');
+
+    $this->resource('usuarios', 'UserController');
+    $this->any('usuarios/pesquisa', 'UserController@search')->name('usuarios.search');
 });
 
 

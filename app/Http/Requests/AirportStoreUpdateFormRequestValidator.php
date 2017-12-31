@@ -27,7 +27,7 @@ class AirportStoreUpdateFormRequestValidator extends FormRequest
         
         return [
             'name'          => "required|min:3|max:100|unique:airports,name,{$id},id",
-            'latitude'      => 'required|regex:/^[\d,.]+$/',
+            'latitude'      => 'required|regex:/^[\d,.-]+$/',
             'longitude'     => 'required|regex:/^[\d,.-]+$/',
             'address'       => 'required|min:3|max:100',
             'number'        => 'required|regex:/^[\d,.-SsNn]+$/',

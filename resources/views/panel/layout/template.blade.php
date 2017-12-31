@@ -62,6 +62,13 @@
         </a>
       </li>
 
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Usuários">
+        <a class="nav-link" href="{{route('usuarios.index')}}">
+          <i class="fa fa-fw fa-users"></i>
+          <span class="nav-link-text">Usuários</span>
+        </a>
+      </li>
+
       <!--
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
