@@ -36,6 +36,13 @@
                                 {!! Form::text('user', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Detalhes do Usuário?']) !!}
                                 {!! Form::text('reserve', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Detalhes da Reserva?']) !!}
                                 {!! Form::date('date', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Data do Voo']) !!}
+                                {!! Form::select('status', [
+                                    '' => 'Todos',
+                                    'canceled'  => 'Cancelado',
+                                    'concluded' => 'Concluído',
+                                    'paid'      => 'Pago',
+                                    'reserved'  => 'Reservado',
+                                ], null, ['class' => 'form-control form-control-sm']) !!}
                                 <button class="btn btn-sm btn-dark">
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                     Pesquisar
