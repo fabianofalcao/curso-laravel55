@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Panel;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ReserveStoreFormRequestValidator;
 use App\Http\Controllers\Controller;
 use App\Models\Reserve;
 use App\Models\Flight;
@@ -52,7 +53,7 @@ class ReserveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReserveStoreFormRequestValidator $request)
     {
         if ( $this->reserve->create($request->all()) )
             return redirect()
@@ -93,7 +94,7 @@ class ReserveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReserveStoreFormRequestValidator $request, $id)
     {
         $reserve = $this->reserve->find($id);
         //dd($reserve);
