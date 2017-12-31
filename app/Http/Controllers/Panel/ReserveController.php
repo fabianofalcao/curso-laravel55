@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Panel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Reserve;
+use App\Models\Flight;
+use App\User;
 
 class ReserveController extends Controller
 {
@@ -35,7 +37,11 @@ class ReserveController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Nova reserva de passagem';
+        $users = User::pluck('name', 'id');
+        $flights = Flight::pluck('id', 'id');
+        $status = $this->reserve->status();
+        return view('panel.reserves.create', compact('title', 'users', 'flights', 'status'));
     }
 
     /**
