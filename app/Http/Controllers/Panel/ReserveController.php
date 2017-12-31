@@ -39,7 +39,9 @@ class ReserveController extends Controller
     {
         $title = 'Nova reserva de passagem';
         $users = User::pluck('name', 'id');
+        $users->prepend('Selecione o usuário', '');
         $flights = Flight::pluck('id', 'id');
+        $flights->prepend('Selecione o voo', '');;
         $status = $this->reserve->status();
         return view('panel.reserves.create', compact('title', 'users', 'flights', 'status'));
     }
@@ -52,7 +54,15 @@ class ReserveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ( $this->reserve->create($request->all()) )
+            return redirect()
+                        ->route('reservas.index')
+                        ->with('message', 'Reservado com sucesso!');
+
+        return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', 'Falha ao reservar!');
     }
 
     /**

@@ -76,9 +76,9 @@
                                     <td>{{$reserve->id}}</td>
                                     <td>{{$reserve->user->name}}</td>
                                     <td>{{$reserve->flight->id}}</td>
-                                    <td>{{$reserve->status}}</td>
+                                    <td>{{$reserve->status($reserve->status)}}</td>
                                     <td class="text-center">
-                                        <a href="{{route('reservas.edit', $reserv->id)}}" class="btn btn-sm btn-primary">Editar</a>
+                                        <a href="{{route('reservas.edit', $reserve->id)}}" class="btn btn-sm btn-primary">Editar</a>
                                     </td>
                                 </tr>
                             @empty

@@ -7,6 +7,8 @@ use App\User;
 
 class Reserve extends Model
 {
+    protected $fillable = ['user_id', 'flight_id', 'date_reserved', 'status'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -20,10 +22,11 @@ class Reserve extends Model
     public function status($op = null)
     {
         $statusAvailable = [
-            'reserved' => 'Reservado',
+            '' => 'Selecione o status',
             'conceled' => 'Cancelado',
+            'concluded' => 'Concluído',
             'paid' => 'Pago',
-            'concluded' => 'Concluído'
+            'reserved' => 'Reservado'            
         ];
         
         if($op)
