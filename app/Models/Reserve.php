@@ -30,8 +30,17 @@ class Reserve extends Model
         ];
         
         if($op)
-            return $statusAvailable['reserved'];
+            return $statusAvailable[$op];
         else
             return $statusAvailable;
+    }
+
+    public function changeStatus($newStatus, $id)
+    {
+        //$this->status = $newStatus;
+        //return $this->save();
+        
+        return $this->where('id', $id)->update(['status' => $newStatus]);
+        
     }
 }
