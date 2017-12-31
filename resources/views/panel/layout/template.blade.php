@@ -69,6 +69,12 @@
         </a>
       </li>
 
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reservas">
+        <a class="nav-link" href="{{route('reservas.index')}}">
+          <i class="fa fa-fw fa-check-square"></i>
+          <span class="nav-link-text">Reservas</span>
+        </a>
+      </li>
       <!--
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">

@@ -37,6 +37,10 @@ $this->group(['prefix' => 'panel', 'namespace' => 'Panel'], function (){
 
     $this->resource('usuarios', 'UserController');
     $this->any('usuarios/pesquisa', 'UserController@search')->name('usuarios.search');
+
+    $this->resource('reservas', 'ReserveController',[
+        'except' => ['show', 'destroy']
+    ]);
 });
 
 
