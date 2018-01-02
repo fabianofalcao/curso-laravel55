@@ -37,7 +37,6 @@ class SiteController extends Controller
         $data['destination'] = $destination['name_city'];
         $data['date'] = formatDateAndTime($request->date);
 
-        //dd($data);
         return view('site.search.search', $data);
     }
 }
