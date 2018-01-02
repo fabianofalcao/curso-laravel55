@@ -89,4 +89,12 @@ class Flight extends Model
         return $flights;
     }
 
+    public function searchFlights($origin, $destination, $date)
+    {
+        $this->where('flights.airport_origin_id', $origin)
+            ->where('flights.airport_destination', $destination)
+            ->where('flights.date', $date)
+            ->get();
+    }
+
 }

@@ -5,19 +5,32 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\City;
+use App\Models\Flight;
+use App\Models\Airport;
 
 class SiteController extends Controller
 {
     public function index()
     {
         $title = "Home Page";
-        $cities = City::get();
-        return view('site.home.index', compact('title', 'cities'));
+        $airports = Airport::with('city')->get();
+        return view('site.home.index', compact('title', 'airports'));
     }
 
     public function promotions()
     {
         $title = 'Promoções';
         return view('site.promotions.index', compact('title'));
+    }
+
+    public function search(Request $request, Flight $flight)
+    {
+        $title =  'Resultados da Pesquisa';
+        $origin = getInfoAirport($request->origin);
+        $destination = getInfoAirport($request->destination);
+
+        $flights = $flight->serachFlights($origin['id_city'], $destination['id_city'], $request->date);
+
+        return view('site.results.search', compact('title', 'origin', 'destination'));
     }
 }
