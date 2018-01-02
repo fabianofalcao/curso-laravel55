@@ -12,6 +12,7 @@
 */
 
 $this->get('/', 'Site\SiteController@index');
+$this->post('pesquisar', 'Site\SiteController@serach')->name('search.flights.site');
 $this->get('promocoes', 'Site\SiteController@promotions')->name('promotions');
 
 $this->group(['prefix' => 'panel', 'namespace' => 'Panel'], function (){
