@@ -27,7 +27,8 @@
                     <i class="fa fa-users"></i> {{$title or 'Gestão de Usuários'}}
                 </div>
                 <div class="card-body">
-                    {!! Form::model($user, ['route' => ['usuarios.update', $user->id], 'name' => 'form_upd_user', 'id' => 'form_upd_user', 'method' => 'PUT', 'files' => true]) !!}
+                    
+                    {!! Form::model($user, ['route' => ['usuarios.update', $user->id],  'method' => 'PUT', 'files' => true]) !!}
                     @include('panel.users.form')
                     {!! Form::close() !!}
                 </div>

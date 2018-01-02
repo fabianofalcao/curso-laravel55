@@ -27,8 +27,7 @@ class UserStoreUpdateFormRequestValidator extends FormRequest
         return [
             'name'                  => "required|min:3|max:100",
             'email'                 => "required|min:3|max:100|unique:users,email,{$idUser},id",
-            'password'              => 'max:15|confirmed',
-            'image'                 => 'image',
+            'password'              => 'max:15|confirmed',            
         ];
     }
 }

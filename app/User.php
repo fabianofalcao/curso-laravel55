@@ -48,9 +48,19 @@ class User extends Authenticatable
         */
     }
 
-    public function updateUser($request, $nameFile = '')
+    public function updateUser($request, $nameFile, $id)
     {
         
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        if($request->password && $request->password != '')
+            $data['password'] = bcrypt($request->password);
+        $data['is_admin'] = $request->is_admin ? true : false;
+        $data['image'] = $nameFile; 
+  
+        return $this->where('id', $id)->update($data);
+        
+        /*
         $this->name     = $request->name;
         $this->email    = $request->email;
 
@@ -59,10 +69,13 @@ class User extends Authenticatable
             $this->password = bcrypt($request->password);
 
         $this->is_admin = $request->is_admin ? true : false;
-        $this->image = $nameFile;
+        
+        // Verifica se atualizou a foto, caso contrário não atualiza
+        if($request->image && $request->image != '')
+            $this->image = $nameFile;
 
         return $this->save();
-        
+        */
     }
 
     public function search($request, $totalPage = 10)

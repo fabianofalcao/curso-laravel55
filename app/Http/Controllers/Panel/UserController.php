@@ -109,23 +109,27 @@ class UserController extends Controller
      */
     public function update(UserStoreUpdateFormRequestValidator $request, $id)
     {
-        $user = $this->user->find($id);
+         $user = $this->user->find($id);
         if(!$user)
             return redirect()->back();
 
         $nameFile = $user->image;
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
-            if($user->image)
+            if($user->image){
                 $nameFile = $user->image;
-            else
+                var_dump($nameFile);
+            }
+            else{
                 $nameFile = uniqid(date('HisYmd')).'.'.$request->image->extension();
-
+                var_dump($nameFile);
+            }
+            
             if (!$request->image->storeAs('users', $nameFile))
                 return redirect()->back()->with('error', 'Falha ao fazer upload')->withInput();
         }
         
-        if($this->user->updateUser($request, $nameFile))
+        if($this->user->updateUser($request, $nameFile, $user->id))
             return redirect()->route('usuarios.index')->with('success', 'Cadastro editado com sucesso');
         else
             return redirect()->back()->with('error', 'Falha ao atualizar')->withInput();
