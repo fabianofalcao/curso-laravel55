@@ -50,7 +50,8 @@ class User extends Authenticatable
 
     public function updateUser($request, $nameFile, $id)
     {
-        
+        /*
+        dd($request->all());
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         if($request->password && $request->password != '')
@@ -59,8 +60,8 @@ class User extends Authenticatable
         $data['image'] = $nameFile; 
   
         return $this->where('id', $id)->update($data);
-        
-        /*
+        */
+
         $this->name     = $request->name;
         $this->email    = $request->email;
 
@@ -70,12 +71,10 @@ class User extends Authenticatable
 
         $this->is_admin = $request->is_admin ? true : false;
         
-        // Verifica se atualizou a foto, caso contrário não atualiza
-        if($request->image && $request->image != '')
-            $this->image = $nameFile;
+        $this->image = $nameFile;
 
         return $this->save();
-        */
+
     }
 
     public function search($request, $totalPage = 10)

@@ -109,7 +109,7 @@ class UserController extends Controller
      */
     public function update(UserStoreUpdateFormRequestValidator $request, $id)
     {
-         $user = $this->user->find($id);
+        $user = $this->user->find($id);
         if(!$user)
             return redirect()->back();
 
@@ -129,7 +129,7 @@ class UserController extends Controller
                 return redirect()->back()->with('error', 'Falha ao fazer upload')->withInput();
         }
         
-        if($this->user->updateUser($request, $nameFile, $user->id))
+        if($user->updateUser($request, $nameFile, $user->id))
             return redirect()->route('usuarios.index')->with('success', 'Cadastro editado com sucesso');
         else
             return redirect()->back()->with('error', 'Falha ao atualizar')->withInput();
