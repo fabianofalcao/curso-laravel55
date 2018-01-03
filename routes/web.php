@@ -15,6 +15,8 @@ $this->get('/', 'Site\SiteController@index');
 $this->post('pesquisar', 'Site\SiteController@search')->name('search.flights.site');
 $this->group(['middleware' => 'auth'], function (){
     $this->get('detalhes-voo/{id}', 'Site\SiteController@detailsFlight')->name('details.flight');
+    $this->post('reservar', 'Site\SiteController@reserveFlight')->name('reserve.flight');
+    $this->get('minhas-compras', 'Site\SiteController@myPurchases')->name('my.purchases');
 });
 $this->get('promocoes', 'Site\SiteController@promotions')->name('promotions');
 

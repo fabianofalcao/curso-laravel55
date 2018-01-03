@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Flight;
 use App\Models\Airport;
+use App\Models\Reserve;
+use App\Http\Requests\ReserveStoreFormRequestValidator;
 
 class SiteController extends Controller
 {
@@ -17,10 +19,12 @@ class SiteController extends Controller
         return view('site.home.index', compact('title', 'airports'));
     }
 
-    public function promotions()
+    public function promotions(Flight $flight)
     {
         $title = 'Promoções';
-        return view('site.promotions.index', compact('title'));
+        $promotions = $flight->promotions();
+        //dd($promotions);
+        return view('site.promotions.index', compact('title', 'promotions'));
     }
 
     public function search(Request $request, Flight $flight)
@@ -48,5 +52,20 @@ class SiteController extends Controller
         $title = "Detalhes do voo {$flight->id}";
         return view('site.flights.details', compact('flight', 'title'));
         dd($idFlight);
+    }
+
+    public function reserveFlight(ReserveStoreFormRequestValidator $request, Reserve $reserve)
+    {
+        //dd($request->all());
+        $reservou = $reserve->newReserve($request->flight_id);
+        if($reservou)
+            return redirect()->route('my.purchases')->with('success', 'Reserva realizada com sucesso');
+        else
+            return redirect()->back()->with('error', 'Falha ao reservar!');
+    }
+
+    public function myPurchases()
+    {
+        dd("Minhas Compras!");
     }
 }
