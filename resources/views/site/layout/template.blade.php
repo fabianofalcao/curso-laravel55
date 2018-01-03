@@ -33,13 +33,13 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="?pg=home">
+        <a class="navbar-brand" href="{{url('')}}">
             <img src="{{url('assets/site/images/logo.png')}}" alt="" class="img-menu">
         </a>
         <div class="collapse navbar-collapse">
             <ul class="menu">
                 <li class="nav-item">
-                    <a class="nav-link" href="?pg=home">Home</a>
+                    <a class="nav-link" href="{{url('')}}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('promotions')}}">Promoções</a>
