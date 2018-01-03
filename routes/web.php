@@ -13,7 +13,9 @@
 
 $this->get('/', 'Site\SiteController@index');
 $this->post('pesquisar', 'Site\SiteController@search')->name('search.flights.site');
-
+$this->group(['middleware' => 'auth'], function (){
+    $this->get('detalhes-voo/{id}', 'Site\SiteController@detailsFlight')->name('details.flight');
+});
 $this->get('promocoes', 'Site\SiteController@promotions')->name('promotions');
 
 $this->group(['prefix' => 'panel', 'namespace' => 'Panel'], function (){

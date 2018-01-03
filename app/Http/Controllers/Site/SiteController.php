@@ -39,4 +39,14 @@ class SiteController extends Controller
 
         return view('site.search.search', $data);
     }
+
+    public function detailsFlight($idFlight)
+    {
+        $flight = Flight::with(['origin', 'destination'])->find($idFlight);
+        if(!$flight)
+            return redirect()->back();
+        $title = "Detalhes do voo {$flight->id}";
+        return view('site.flights.details', compact('flight', 'title'));
+        dd($idFlight);
+    }
 }
